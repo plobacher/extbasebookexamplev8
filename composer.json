@@ -1,0 +1,19 @@
+{
+    "name": "pluswerk/simpleblog",
+    "type": "typo3-cms-extension",
+    "description": "This is the didactical example from the book \"TYPO3 Extbase\" by Patrick Lobacher",
+    "authors": [
+        {
+            "name": "Patrick Lobacher",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^8.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pluswerk\\Simpleblog\\": "Classes"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-12-31T17:37:01Z" product-name="simpleblog">
+		<header/>
+		<body>
+			<trans-unit id="comment.description">
+				<source>Comment text</source>
+			</trans-unit>
+			<trans-unit id="commentdate.description">
+				<source>Comment date</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
