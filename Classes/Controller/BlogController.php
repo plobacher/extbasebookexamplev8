@@ -1,38 +1,83 @@
 <?php
 namespace Pluswerk\Simpleblog\Controller;
 
-/***
- *
- * This file is part of the "Simple Blog Extension" Extension for TYPO3 CMS.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- *  (c) 2017 Patrick Lobacher <patrick@lobacher.de>, +Pluswerk AG
- *
- ***/
-
-/**
- * BlogController
- */
 class BlogController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
-     * blogRepository
-     *
      * @var \Pluswerk\Simpleblog\Domain\Repository\BlogRepository
-     * @inject
      */
-    protected $blogRepository = null;
+    protected $blogRepository;
 
     /**
-     * action list
-     *
-     * @return void
+     * @param \Pluswerk\Simpleblog\Domain\Repository\BlogRepository $blogRepository
      */
+    public function injectBlogRepository(\Pluswerk\Simpleblog\Domain\Repository\BlogRepository $blogRepository)
+    {
+        $this->blogRepository = $blogRepository;
+    }
+
     public function listAction()
     {
-        $blogs = $this->blogRepository->findAll();
-        $this->view->assign('blogs', $blogs);
+        $this->view->assign('blogs',$this->blogRepository->findAll());
+    }
+
+    /**
+     * @param \Pluswerk\Simpleblog\Domain\Model\Blog $blog
+     */
+    public function addFormAction(\Pluswerk\Simpleblog\Domain\Model\Blog $blog = NULL)
+    {
+        $this->view->assign('blog',$blog);
+    }
+
+    /**
+     * @param \Pluswerk\Simpleblog\Domain\Model\Blog $blog
+     */
+    public function addAction(\Pluswerk\Simpleblog\Domain\Model\Blog $blog)
+    {
+        $this->blogRepository->add($blog);
+        $this->redirect('list');
+    }
+
+    /**
+     * @param \Pluswerk\Simpleblog\Domain\Model\Blog $blog
+     */
+    public function showAction(\Pluswerk\Simpleblog\Domain\Model\Blog $blog)
+    {
+        $this->view->assign('blog', $blog);
+    }
+
+    /**
+     * @param \Pluswerk\Simpleblog\Domain\Model\Blog $blog
+     */
+    public function updateFormAction(\Pluswerk\Simpleblog\Domain\Model\Blog $blog)
+    {
+        $this->view->assign('blog',$blog);
+    }
+
+    /**
+     * @param \Pluswerk\Simpleblog\Domain\Model\Blog $blog
+     */
+    public function updateAction(\Pluswerk\Simpleblog\Domain\Model\Blog $blog)
+    {
+        $this->blogRepository->update($blog);
+        $this->redirect('list');
+    }
+
+    /**
+     * @param \Pluswerk\Simpleblog\Domain\Model\Blog $blog
+     */
+    public function deleteConfirmAction(\Pluswerk\Simpleblog\Domain\Model\Blog $blog)
+    {
+        $this->view->assign('blog',$blog);
+    }
+
+
+    /**
+     * @param \Pluswerk\Simpleblog\Domain\Model\Blog $blog
+     */
+    public function deleteAction(\Pluswerk\Simpleblog\Domain\Model\Blog $blog)
+    {
+        $this->blogRepository->remove($blog);
+        $this->redirect('list');
     }
 }

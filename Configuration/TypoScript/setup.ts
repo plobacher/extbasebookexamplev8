@@ -62,6 +62,8 @@ page {
   includeCSS {
     bootstrap = EXT:simpleblog/Resources/Public/Bootstrap/css/bootstrap.min.css
     simpleblog = EXT:simpleblog/Resources/Public/Css/simpleblog.css
+    fa = //maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
+    fa.external = 1
   }
   includeJSLibs {
     jquery = //code.jquery.com/jquery-3.1.1.slim.min.js

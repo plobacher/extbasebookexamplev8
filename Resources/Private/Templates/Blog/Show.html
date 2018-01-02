@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <h1>Show Blog</h1>
+
+    <dl class="row">
+        <dt class="col-sm-3">Blog title:</dt>
+        <dd class="col-sm-9">{blog.title}</dd>
+        <dt class="col-sm-3">Blog description:</dt>
+        <dd class="col-sm-9"><f:format.nl2br>{blog.description}</f:format.nl2br></dd>
+    </dl>
+
+    <f:link.action action="list" class="btn btn-primary">Back to Blog list</f:link.action>
+</div>

@@ -1,42 +1,17 @@
-<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-	<f:layout name="Default" />
+<div class="container-fluid">
 
-	This Template is responsible for creating a table of domain objects.
+    <h1>Blog List</h1>
 
-	If you modify this template, do not forget to change the overwrite settings
-	in /Configuration/ExtensionBuilder/settings.yaml:
-	  Resources:
-		Private:
-		  Templates:
-			List.html: keep
+    <ul class="list-group">
+        <f:for each="{blogs}" as="blog">
+            <li class="list-group-item">{blog.title}
+                <f:link.action action="deleteConfirm" arguments="{blog:blog}" class="btn btn-primary btn-sm float-right"><span class="fa fa-trash" aria-hidden="true"></span> DEL</f:link.action>
+                <f:link.action action="updateForm" arguments="{blog:blog}" class="btn btn-primary btn-sm float-right mr-1"><span class="fa fa-pencil" aria-hidden="true"></span> EDIT</f:link.action>
+                <f:link.action action="show" arguments="{blog:blog}" class="btn btn-primary btn-sm float-right mr-1"><span class="fa fa-eye" aria-hidden="true"></span> SHOW</f:link.action>
+            </li>
+        </f:for>
+    </ul>
+    <br />
+    <f:link.action action="addForm" class="btn btn-primary">Add Blog</f:link.action>
 
-	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
-	<f:section name="content">
-		<h1>Listing for Blog</h1>
-
-		<f:flashMessages />
-
-		<table  class="tx_simpleblog" >
-			<tr>
-				<th><f:translate key="tx_simpleblog_domain_model_blog.title" /></th>
-				<th><f:translate key="tx_simpleblog_domain_model_blog.description" /></th>
-				<th><f:translate key="tx_simpleblog_domain_model_blog.image" /></th>
-				<th> </th>
-				<th> </th>
-			</tr>
-
-			<f:for each="{blogs}" as="blog">
-				<tr>
-					<td><f:link.action action="show" arguments="{blog : blog}"> {blog.title}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{blog : blog}"> {blog.description}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{blog : blog}"> {blog.image.originalResource.name}</f:link.action></td>
-					<td><f:link.action action="edit" arguments="{blog : blog}">Edit</f:link.action></td>
-					<td><f:link.action action="delete" arguments="{blog : blog}">Delete</f:link.action></td>
-				</tr>
-			</f:for>
-		</table>
-
-		<f:link.action action="new">New Blog</f:link.action>
-	</f:section>
-</html>
+</div>
