@@ -18,12 +18,14 @@ class BlogController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     public function listAction()
     {
-        $search = '';
         if ($this->request->hasArgument('search')){
             $search = $this->request->getArgument('search');
         }
-        $this->view->assign('blogs', $this->blogRepository->findSearchForm($search));
-        $this->view->assign('search',$search);
+
+        $limit = ($this->settings['blog']['max']) ?: NULL;
+
+        $this->view->assign('blogs', $this->blogRepository->findSearchForm($search,$limit));
+        $this->view->assign('search', $search);
     }
 
     /**

@@ -1,26 +1,28 @@
 
 plugin.tx_simpleblog_bloglisting {
-    view {
-        templateRootPaths.0 = EXT:simpleblog/Resources/Private/Templates/
-        templateRootPaths.1 = {$plugin.tx_simpleblog_bloglisting.view.templateRootPath}
-        partialRootPaths.0 = EXT:simpleblog/Resources/Private/Partials/
-        partialRootPaths.1 = {$plugin.tx_simpleblog_bloglisting.view.partialRootPath}
-        layoutRootPaths.0 = EXT:simpleblog/Resources/Private/Layouts/
-        layoutRootPaths.1 = {$plugin.tx_simpleblog_bloglisting.view.layoutRootPath}
-    }
     persistence {
-        storagePid = {$plugin.tx_simpleblog_bloglisting.persistence.storagePid}
-        #recursive = 1
+    # storagePid = 0,3,4,5,6
+        storagePid = 2
+        recursive = 1
+        classes {
+            Pluswerk\Simpleblog\Domain\Model\Blog {
+                newRecordStoragePid = 3
+            }
+            Pluswerk\Simpleblog\Domain\Model\Post {
+                newRecordStoragePid = 4
+            }
+            Pluswerk\Simpleblog\Domain\Model\Comment {
+                newRecordStoragePid = 5
+            }
+            Pluswerk\Simpleblog\Domain\Model\Tag {
+                newRecordStoragePid = 6
+            }
+        }
     }
-    features {
-        #skipDefaultArguments = 1
-        # if set to 1, the enable fields are ignored in BE context
-        ignoreAllEnableFieldsInBe = 0
-        # Should be on by default, but can be disabled if all action in the plugin are uncached
-        requireCHashArgumentForActionArguments = 1
-    }
-    mvc {
-        #callDefaultActionIfActionCantBeResolved = 1
+    settings {
+        blog {
+            max = 10
+        }
     }
 }
 
@@ -71,3 +73,4 @@ page {
     bootstrap = EXT:simpleblog/Resources/Public/Bootstrap/js/bootstrap.min.js
   }
 }
+
