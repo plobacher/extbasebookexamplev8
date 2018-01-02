@@ -21,7 +21,7 @@ class Blog extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Title of the blog
      *
      * @var string
-     * @validate NotEmpty
+     * @validate NotEmpty, \Pluswerk\Simpleblog\Validation\Validator\WordValidator(max=3)
      */
     protected $title = '';
 
