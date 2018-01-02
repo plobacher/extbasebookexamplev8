@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectResources">
+    <resource url="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" location="$PROJECT_DIR$/../../../fluid-master.xsd" />
+  </component>
+</project>

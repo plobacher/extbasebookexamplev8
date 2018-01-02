@@ -57,3 +57,15 @@ plugin.tx_simpleblog._CSS_DEFAULT_STYLE (
         color:green;
     }
 )
+
+page {
+  includeCSS {
+    bootstrap = EXT:simpleblog/Resources/Public/Bootstrap/css/bootstrap.min.css
+    simpleblog = EXT:simpleblog/Resources/Public/Css/simpleblog.css
+  }
+  includeJSLibs {
+    jquery = //code.jquery.com/jquery-3.1.1.slim.min.js
+    jquery.external = 1
+    bootstrap = EXT:simpleblog/Resources/Public/Bootstrap/js/bootstrap.min.js
+  }
+}
